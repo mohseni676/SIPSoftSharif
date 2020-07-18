@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BpmsSharifDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FG_Hamis">
+          <Key>
+            <PropertyRef Name="HamiId" />
+          </Key>
+          <Property Name="HamiId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="HamiConfirm" Type="bit" />
+          <Property Name="HamiCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="HamiFName" Type="nvarchar" MaxLength="30" />
+          <Property Name="HamiLName" Type="nvarchar" MaxLength="30" />
+          <Property Name="HamiMobile1" Type="nvarchar" MaxLength="15" />
+          <Property Name="HamiMobile2" Type="nvarchar" MaxLength="15" />
+          <Property Name="HamiPhone1" Type="nvarchar" MaxLength="15" />
+          <Property Name="HamiPhone2" Type="nvarchar" MaxLength="15" />
+          <Property Name="HamiBirthdate" Type="nvarchar" MaxLength="10" />
+          <Property Name="HamiJobId" Type="int" />
+          <Property Name="HamiEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="HamiAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="HamiLastAction" Type="date" />
+          <Property Name="HamiPrice" Type="int" />
+          <Property Name="HamiJobStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="HamiUID" Type="nvarchar" MaxLength="12" />
+          <Property Name="HamiPass" Type="nvarchar" MaxLength="16" />
+          <Property Name="HamiComment" Type="nvarchar" MaxLength="200" />
+          <Property Name="HamiAllPhones" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonnelId" Type="int" />
+          <Property Name="SaveDate" Type="smalldatetime" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="HamiMadadkar" Type="int" />
+          <Property Name="HamiKey" Type="nvarchar" MaxLength="64" />
+          <Property Name="HamiPassword" Type="nvarchar" MaxLength="64" />
+          <Property Name="Hamistartdate" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="FG_Madadkars">
+          <Key>
+            <PropertyRef Name="MadadkarId" />
+          </Key>
+          <Property Name="MadadkarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="MadadkarActive" Type="bit" />
+          <Property Name="MadadkarCode" Type="int" />
+          <Property Name="MadadkarConfirm" Type="bit" />
+          <Property Name="MadadkarFName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarLName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarFathername" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarShenasnameh" Type="nvarchar" MaxLength="12" />
+          <Property Name="MadadkarMelli" Type="nvarchar" MaxLength="12" />
+          <Property Name="MadadkarPersonnel" Type="nvarchar" MaxLength="10" />
+          <Property Name="MadadkarBirhtdate" Type="nvarchar" MaxLength="12" />
+          <Property Name="MadadkarBirthplace" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMazhab" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarSex" Type="int" />
+          <Property Name="MadadkarMarridId" Type="tinyint" />
+          <Property Name="MadadkarLevel" Type="int" />
+          <Property Name="MadadkarEducation" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadkarSarbazi" Type="tinyint" />
+          <Property Name="MadadkarJob" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadkarPhone" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMobile" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMobile2" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarAccount" Type="nvarchar" MaxLength="22" />
+          <Property Name="MadadkarAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="MadadkarEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadkarImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadKarLastAction" Type="date" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SaveDate" Type="smalldatetime" />
+          <Property Name="PersonnelId" Type="int" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharifData.dbo.FG_HamiMadadjusInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FG_HamiMadadjusInfo">
+          <Key>
+            <PropertyRef Name="HamiMadadjuId" />
+          </Key>
+          <Property Name="HamiMadadjuId" Type="int" Nullable="false" />
+          <Property Name="HamiId" Type="int" />
+          <Property Name="MadadjuId" Type="int" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="HamiFName" Type="nvarchar" MaxLength="30" />
+          <Property Name="HamiLName" Type="nvarchar" MaxLength="30" />
+          <Property Name="HamiName" Type="nvarchar" MaxLength="61" />
+          <Property Name="HamiPhone1" Type="nvarchar" MaxLength="15" />
+          <Property Name="MadadjuFName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadjuLName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadJuName" Type="nvarchar" MaxLength="61" />
+          <Property Name="MadadjuCode" Type="int" />
+          <Property Name="MadadjuPhone" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadjuMobile" Type="nvarchar" MaxLength="30" />
+          <Property Name="SaveDate" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharifData.dbo.FG_HamiMadadkarsInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FG_HamiMadadkarsInfo">
+          <Key>
+            <PropertyRef Name="HamiMadadkarId" />
+          </Key>
+          <Property Name="HamiMadadkarId" Type="int" Nullable="false" />
+          <Property Name="HamiId" Type="int" />
+          <Property Name="MadadkarId" Type="int" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="MadadkarCode" Type="int" />
+          <Property Name="MadadkarLName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarFName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarPhone" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMobile" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMobile2" Type="nvarchar" MaxLength="30" />
+          <Property Name="HamiCode" Type="nvarchar" MaxLength="6" />
+          <Property Name="HamiLName" Type="nvarchar" MaxLength="30" />
+          <Property Name="HamiFName" Type="nvarchar" MaxLength="30" />
+          <Property Name="HamiMobile1" Type="nvarchar" MaxLength="15" />
+          <Property Name="HamiMobile2" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharifData.dbo.FG_madadkarsInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FG_madadkarsInfo">
+          <Key>
+            <PropertyRef Name="MadadkarId" />
+          </Key>
+          <Property Name="MadadkarId" Type="int" Nullable="false" />
+          <Property Name="MadadkarCode" Type="int" />
+          <Property Name="MadadkarFName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarLName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarFathername" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarShenasnameh" Type="nvarchar" MaxLength="12" />
+          <Property Name="MadadkarMelli" Type="nvarchar" MaxLength="12" />
+          <Property Name="MadadkarBirhtdate" Type="nvarchar" MaxLength="12" />
+          <Property Name="MadadkarBirthplace" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMazhab" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarSex" Type="bit" />
+          <Property Name="MadadkarMarridId" Type="tinyint" />
+          <Property Name="MadadkarLevel" Type="int" />
+          <Property Name="MadadkarEducation" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadkarSarbazi" Type="tinyint" />
+          <Property Name="MadadkarJob" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadkarPhone" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMobile" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarMobile2" Type="nvarchar" MaxLength="30" />
+          <Property Name="MadadkarAccount" Type="nvarchar" MaxLength="22" />
+          <Property Name="MadadkarAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="MadadkarName" Type="nvarchar" MaxLength="61" />
+          <Property Name="MadadkarEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadkarImg" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaveDate" Type="smalldatetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="MadadkarStatus" Type="int" />
+          <Property Name="MadadkarConfirm" Type="bit" />
+          <Property Name="MadadKarLastAction" Type="date" />
+          <Property Name="PersonnelId" Type="int" />
+          <Property Name="PersonnelName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MadadkarPersonnel" Type="nvarchar" MaxLength="10" />
+          <Property Name="MadadkarActive" Type="bit" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="BranchTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="BpmsSharifDataModelStoreContainer">
+          <EntitySet Name="FG_Hamis" EntityType="Self.FG_Hamis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FG_Madadkars" EntityType="Self.FG_Madadkars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FG_HamiMadadjusInfo" EntityType="Self.FG_HamiMadadjusInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FG_HamiMadadjusInfo].[HamiMadadjuId] AS [HamiMadadjuId], 
+    [FG_HamiMadadjusInfo].[HamiId] AS [HamiId], 
+    [FG_HamiMadadjusInfo].[MadadjuId] AS [MadadjuId], 
+    [FG_HamiMadadjusInfo].[Deleted] AS [Deleted], 
+    [FG_HamiMadadjusInfo].[HamiFName] AS [HamiFName], 
+    [FG_HamiMadadjusInfo].[HamiLName] AS [HamiLName], 
+    [FG_HamiMadadjusInfo].[HamiName] AS [HamiName], 
+    [FG_HamiMadadjusInfo].[HamiPhone1] AS [HamiPhone1], 
+    [FG_HamiMadadjusInfo].[MadadjuFName] AS [MadadjuFName], 
+    [FG_HamiMadadjusInfo].[MadadjuLName] AS [MadadjuLName], 
+    [FG_HamiMadadjusInfo].[MadadJuName] AS [MadadJuName], 
+    [FG_HamiMadadjusInfo].[MadadjuCode] AS [MadadjuCode], 
+    [FG_HamiMadadjusInfo].[MadadjuPhone] AS [MadadjuPhone], 
+    [FG_HamiMadadjusInfo].[MadadjuMobile] AS [MadadjuMobile], 
+    [FG_HamiMadadjusInfo].[SaveDate] AS [SaveDate]
+    FROM [dbo].[FG_HamiMadadjusInfo] AS [FG_HamiMadadjusInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FG_HamiMadadkarsInfo" EntityType="Self.FG_HamiMadadkarsInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FG_HamiMadadkarsInfo].[HamiMadadkarId] AS [HamiMadadkarId], 
+    [FG_HamiMadadkarsInfo].[HamiId] AS [HamiId], 
+    [FG_HamiMadadkarsInfo].[MadadkarId] AS [MadadkarId], 
+    [FG_HamiMadadkarsInfo].[Deleted] AS [Deleted], 
+    [FG_HamiMadadkarsInfo].[MadadkarCode] AS [MadadkarCode], 
+    [FG_HamiMadadkarsInfo].[MadadkarLName] AS [MadadkarLName], 
+    [FG_HamiMadadkarsInfo].[MadadkarFName] AS [MadadkarFName], 
+    [FG_HamiMadadkarsInfo].[MadadkarPhone] AS [MadadkarPhone], 
+    [FG_HamiMadadkarsInfo].[MadadkarMobile] AS [MadadkarMobile], 
+    [FG_HamiMadadkarsInfo].[MadadkarMobile2] AS [MadadkarMobile2], 
+    [FG_HamiMadadkarsInfo].[HamiCode] AS [HamiCode], 
+    [FG_HamiMadadkarsInfo].[HamiLName] AS [HamiLName], 
+    [FG_HamiMadadkarsInfo].[HamiFName] AS [HamiFName], 
+    [FG_HamiMadadkarsInfo].[HamiMobile1] AS [HamiMobile1], 
+    [FG_HamiMadadkarsInfo].[HamiMobile2] AS [HamiMobile2]
+    FROM [dbo].[FG_HamiMadadkarsInfo] AS [FG_HamiMadadkarsInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FG_madadkarsInfo" EntityType="Self.FG_madadkarsInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FG_madadkarsInfo].[MadadkarId] AS [MadadkarId], 
+    [FG_madadkarsInfo].[MadadkarCode] AS [MadadkarCode], 
+    [FG_madadkarsInfo].[MadadkarFName] AS [MadadkarFName], 
+    [FG_madadkarsInfo].[MadadkarLName] AS [MadadkarLName], 
+    [FG_madadkarsInfo].[MadadkarFathername] AS [MadadkarFathername], 
+    [FG_madadkarsInfo].[MadadkarShenasnameh] AS [MadadkarShenasnameh], 
+    [FG_madadkarsInfo].[MadadkarMelli] AS [MadadkarMelli], 
+    [FG_madadkarsInfo].[MadadkarBirhtdate] AS [MadadkarBirhtdate], 
+    [FG_madadkarsInfo].[MadadkarBirthplace] AS [MadadkarBirthplace], 
+    [FG_madadkarsInfo].[MadadkarMazhab] AS [MadadkarMazhab], 
+    [FG_madadkarsInfo].[MadadkarSex] AS [MadadkarSex], 
+    [FG_madadkarsInfo].[MadadkarMarridId] AS [MadadkarMarridId], 
+    [FG_madadkarsInfo].[MadadkarLevel] AS [MadadkarLevel], 
+    [FG_madadkarsInfo].[MadadkarEducation] AS [MadadkarEducation], 
+    [FG_madadkarsInfo].[MadadkarSarbazi] AS [MadadkarSarbazi], 
+    [FG_madadkarsInfo].[MadadkarJob] AS [MadadkarJob], 
+    [FG_madadkarsInfo].[MadadkarPhone] AS [MadadkarPhone], 
+    [FG_madadkarsInfo].[MadadkarMobile] AS [MadadkarMobile], 
+    [FG_madadkarsInfo].[MadadkarMobile2] AS [MadadkarMobile2], 
+    [FG_madadkarsInfo].[MadadkarAccount] AS [MadadkarAccount], 
+    [FG_madadkarsInfo].[MadadkarAddress] AS [MadadkarAddress], 
+    [FG_madadkarsInfo].[Deleted] AS [Deleted], 
+    [FG_madadkarsInfo].[MadadkarName] AS [MadadkarName], 
+    [FG_madadkarsInfo].[MadadkarEmail] AS [MadadkarEmail], 
+    [FG_madadkarsInfo].[MadadkarImg] AS [MadadkarImg], 
+    [FG_madadkarsInfo].[SaveDate] AS [SaveDate], 
+    [FG_madadkarsInfo].[UserId] AS [UserId], 
+    [FG_madadkarsInfo].[MadadkarStatus] AS [MadadkarStatus], 
+    [FG_madadkarsInfo].[MadadkarConfirm] AS [MadadkarConfirm], 
+    [FG_madadkarsInfo].[MadadKarLastAction] AS [MadadKarLastAction], 
+    [FG_madadkarsInfo].[PersonnelId] AS [PersonnelId], 
+    [FG_madadkarsInfo].[PersonnelName] AS [PersonnelName], 
+    [FG_madadkarsInfo].[MadadkarPersonnel] AS [MadadkarPersonnel], 
+    [FG_madadkarsInfo].[MadadkarActive] AS [MadadkarActive], 
+    [FG_madadkarsInfo].[BranchId] AS [BranchId], 
+    [FG_madadkarsInfo].[BranchTitle] AS [BranchTitle]
+    FROM [dbo].[FG_madadkarsInfo] AS [FG_madadkarsInfo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BpmsSharifDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FG_Madadkars">
+          <Key>
+            <PropertyRef Name="MadadkarId" />
+          </Key>
+          <Property Name="MadadkarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="MadadkarActive" Type="Boolean" />
+          <Property Name="MadadkarCode" Type="Int32" />
+          <Property Name="MadadkarConfirm" Type="Boolean" />
+          <Property Name="MadadkarFName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarLName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarFathername" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarShenasnameh" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMelli" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarPersonnel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarBirhtdate" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarBirthplace" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMazhab" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarSex" Type="Int32" />
+          <Property Name="MadadkarMarridId" Type="Byte" />
+          <Property Name="MadadkarLevel" Type="Int32" />
+          <Property Name="MadadkarEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarSarbazi" Type="Byte" />
+          <Property Name="MadadkarJob" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMobile2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarAccount" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadKarLastAction" Type="DateTime" Precision="0" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SaveDate" Type="DateTime" Precision="0" />
+          <Property Name="PersonnelId" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="FG_HamiMadadjusInfo">
+          <Key>
+            <PropertyRef Name="HamiMadadjuId" />
+          </Key>
+          <Property Name="HamiMadadjuId" Type="Int32" Nullable="false" />
+          <Property Name="HamiId" Type="Int32" />
+          <Property Name="MadadjuId" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="HamiFName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HamiLName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HamiName" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="HamiPhone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MadadjuFName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadjuLName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadJuName" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="MadadjuCode" Type="Int32" />
+          <Property Name="MadadjuPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadjuMobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SaveDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="FG_HamiMadadkarsInfo">
+          <Key>
+            <PropertyRef Name="HamiMadadkarId" />
+          </Key>
+          <Property Name="HamiMadadkarId" Type="Int32" Nullable="false" />
+          <Property Name="HamiId" Type="Int32" />
+          <Property Name="MadadkarId" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="MadadkarCode" Type="Int32" />
+          <Property Name="MadadkarLName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarFName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMobile2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HamiCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="HamiLName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HamiFName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HamiMobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HamiMobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FG_madadkarsInfo">
+          <Key>
+            <PropertyRef Name="MadadkarId" />
+          </Key>
+          <Property Name="MadadkarId" Type="Int32" Nullable="false" />
+          <Property Name="MadadkarCode" Type="Int32" />
+          <Property Name="MadadkarFName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarLName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarFathername" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarShenasnameh" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMelli" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarBirhtdate" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarBirthplace" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMazhab" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarSex" Type="Boolean" />
+          <Property Name="MadadkarMarridId" Type="Byte" />
+          <Property Name="MadadkarLevel" Type="Int32" />
+          <Property Name="MadadkarEducation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarSarbazi" Type="Byte" />
+          <Property Name="MadadkarJob" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarMobile2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarAccount" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="MadadkarName" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaveDate" Type="DateTime" Precision="0" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="MadadkarStatus" Type="Int32" />
+          <Property Name="MadadkarConfirm" Type="Boolean" />
+          <Property Name="MadadKarLastAction" Type="DateTime" Precision="0" />
+          <Property Name="PersonnelId" Type="Int32" />
+          <Property Name="PersonnelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarPersonnel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MadadkarActive" Type="Boolean" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="BranchTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="BpmsSharifDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FG_Madadkars" EntityType="Self.FG_Madadkars" />
+          <EntitySet Name="FG_HamiMadadjusInfo" EntityType="Self.FG_HamiMadadjusInfo" />
+          <EntitySet Name="FG_HamiMadadkarsInfo" EntityType="Self.FG_HamiMadadkarsInfo" />
+          <EntitySet Name="FG_madadkarsInfo" EntityType="Self.FG_madadkarsInfo" />
+          <EntitySet Name="FG_Hamis" EntityType="BpmsSharifDataModel.FG_Hamis" />
+        </EntityContainer>
+        <EntityType Name="FG_Hamis">
+          <Key>
+            <PropertyRef Name="HamiId" />
+          </Key>
+          <Property Name="HamiId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="HamiConfirm" Type="Boolean" />
+          <Property Name="HamiCode" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="HamiFName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HamiLName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="HamiMobile1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HamiMobile2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HamiPhone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HamiPhone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HamiBirthdate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="HamiJobId" Type="Int32" />
+          <Property Name="HamiEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HamiAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="HamiLastAction" Type="DateTime" Precision="0" />
+          <Property Name="HamiPrice" Type="Int32" />
+          <Property Name="HamiJobStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HamiUID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="HamiPass" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="HamiComment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HamiAllPhones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonnelId" Type="Int32" />
+          <Property Name="SaveDate" Type="DateTime" Precision="0" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="HamiMadadkar" Type="Int32" />
+          <Property Name="HamiKey" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="HamiPassword" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Hamistartdate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BpmsSharifDataModelStoreContainer" CdmEntityContainer="BpmsSharifDataEntities">
+          <EntitySetMapping Name="FG_Madadkars">
+            <EntityTypeMapping TypeName="BpmsSharifDataModel.FG_Madadkars">
+              <MappingFragment StoreEntitySet="FG_Madadkars">
+                <ScalarProperty Name="MadadkarId" ColumnName="MadadkarId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="MadadkarActive" ColumnName="MadadkarActive" />
+                <ScalarProperty Name="MadadkarCode" ColumnName="MadadkarCode" />
+                <ScalarProperty Name="MadadkarConfirm" ColumnName="MadadkarConfirm" />
+                <ScalarProperty Name="MadadkarFName" ColumnName="MadadkarFName" />
+                <ScalarProperty Name="MadadkarLName" ColumnName="MadadkarLName" />
+                <ScalarProperty Name="MadadkarFathername" ColumnName="MadadkarFathername" />
+                <ScalarProperty Name="MadadkarShenasnameh" ColumnName="MadadkarShenasnameh" />
+                <ScalarProperty Name="MadadkarMelli" ColumnName="MadadkarMelli" />
+                <ScalarProperty Name="MadadkarPersonnel" ColumnName="MadadkarPersonnel" />
+                <ScalarProperty Name="MadadkarBirhtdate" ColumnName="MadadkarBirhtdate" />
+                <ScalarProperty Name="MadadkarBirthplace" ColumnName="MadadkarBirthplace" />
+                <ScalarProperty Name="MadadkarMazhab" ColumnName="MadadkarMazhab" />
+                <ScalarProperty Name="MadadkarSex" ColumnName="MadadkarSex" />
+                <ScalarProperty Name="MadadkarMarridId" ColumnName="MadadkarMarridId" />
+                <ScalarProperty Name="MadadkarLevel" ColumnName="MadadkarLevel" />
+                <ScalarProperty Name="MadadkarEducation" ColumnName="MadadkarEducation" />
+                <ScalarProperty Name="MadadkarSarbazi" ColumnName="MadadkarSarbazi" />
+                <ScalarProperty Name="MadadkarJob" ColumnName="MadadkarJob" />
+                <ScalarProperty Name="MadadkarPhone" ColumnName="MadadkarPhone" />
+                <ScalarProperty Name="MadadkarMobile" ColumnName="MadadkarMobile" />
+                <ScalarProperty Name="MadadkarMobile2" ColumnName="MadadkarMobile2" />
+                <ScalarProperty Name="MadadkarAccount" ColumnName="MadadkarAccount" />
+                <ScalarProperty Name="MadadkarAddress" ColumnName="MadadkarAddress" />
+                <ScalarProperty Name="MadadkarEmail" ColumnName="MadadkarEmail" />
+                <ScalarProperty Name="MadadkarImg" ColumnName="MadadkarImg" />
+                <ScalarProperty Name="MadadKarLastAction" ColumnName="MadadKarLastAction" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+                <ScalarProperty Name="PersonnelId" ColumnName="PersonnelId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FG_HamiMadadjusInfo">
+            <EntityTypeMapping TypeName="BpmsSharifDataModel.FG_HamiMadadjusInfo">
+              <MappingFragment StoreEntitySet="FG_HamiMadadjusInfo">
+                <ScalarProperty Name="HamiMadadjuId" ColumnName="HamiMadadjuId" />
+                <ScalarProperty Name="HamiId" ColumnName="HamiId" />
+                <ScalarProperty Name="MadadjuId" ColumnName="MadadjuId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="HamiFName" ColumnName="HamiFName" />
+                <ScalarProperty Name="HamiLName" ColumnName="HamiLName" />
+                <ScalarProperty Name="HamiName" ColumnName="HamiName" />
+                <ScalarProperty Name="HamiPhone1" ColumnName="HamiPhone1" />
+                <ScalarProperty Name="MadadjuFName" ColumnName="MadadjuFName" />
+                <ScalarProperty Name="MadadjuLName" ColumnName="MadadjuLName" />
+                <ScalarProperty Name="MadadJuName" ColumnName="MadadJuName" />
+                <ScalarProperty Name="MadadjuCode" ColumnName="MadadjuCode" />
+                <ScalarProperty Name="MadadjuPhone" ColumnName="MadadjuPhone" />
+                <ScalarProperty Name="MadadjuMobile" ColumnName="MadadjuMobile" />
+                <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FG_HamiMadadkarsInfo">
+            <EntityTypeMapping TypeName="BpmsSharifDataModel.FG_HamiMadadkarsInfo">
+              <MappingFragment StoreEntitySet="FG_HamiMadadkarsInfo">
+                <ScalarProperty Name="HamiMadadkarId" ColumnName="HamiMadadkarId" />
+                <ScalarProperty Name="HamiId" ColumnName="HamiId" />
+                <ScalarProperty Name="MadadkarId" ColumnName="MadadkarId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="MadadkarCode" ColumnName="MadadkarCode" />
+                <ScalarProperty Name="MadadkarLName" ColumnName="MadadkarLName" />
+                <ScalarProperty Name="MadadkarFName" ColumnName="MadadkarFName" />
+                <ScalarProperty Name="MadadkarPhone" ColumnName="MadadkarPhone" />
+                <ScalarProperty Name="MadadkarMobile" ColumnName="MadadkarMobile" />
+                <ScalarProperty Name="MadadkarMobile2" ColumnName="MadadkarMobile2" />
+                <ScalarProperty Name="HamiCode" ColumnName="HamiCode" />
+                <ScalarProperty Name="HamiLName" ColumnName="HamiLName" />
+                <ScalarProperty Name="HamiFName" ColumnName="HamiFName" />
+                <ScalarProperty Name="HamiMobile1" ColumnName="HamiMobile1" />
+                <ScalarProperty Name="HamiMobile2" ColumnName="HamiMobile2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FG_madadkarsInfo">
+            <EntityTypeMapping TypeName="BpmsSharifDataModel.FG_madadkarsInfo">
+              <MappingFragment StoreEntitySet="FG_madadkarsInfo">
+                <ScalarProperty Name="MadadkarId" ColumnName="MadadkarId" />
+                <ScalarProperty Name="MadadkarCode" ColumnName="MadadkarCode" />
+                <ScalarProperty Name="MadadkarFName" ColumnName="MadadkarFName" />
+                <ScalarProperty Name="MadadkarLName" ColumnName="MadadkarLName" />
+                <ScalarProperty Name="MadadkarFathername" ColumnName="MadadkarFathername" />
+                <ScalarProperty Name="MadadkarShenasnameh" ColumnName="MadadkarShenasnameh" />
+                <ScalarProperty Name="MadadkarMelli" ColumnName="MadadkarMelli" />
+                <ScalarProperty Name="MadadkarBirhtdate" ColumnName="MadadkarBirhtdate" />
+                <ScalarProperty Name="MadadkarBirthplace" ColumnName="MadadkarBirthplace" />
+                <ScalarProperty Name="MadadkarMazhab" ColumnName="MadadkarMazhab" />
+                <ScalarProperty Name="MadadkarSex" ColumnName="MadadkarSex" />
+                <ScalarProperty Name="MadadkarMarridId" ColumnName="MadadkarMarridId" />
+                <ScalarProperty Name="MadadkarLevel" ColumnName="MadadkarLevel" />
+                <ScalarProperty Name="MadadkarEducation" ColumnName="MadadkarEducation" />
+                <ScalarProperty Name="MadadkarSarbazi" ColumnName="MadadkarSarbazi" />
+                <ScalarProperty Name="MadadkarJob" ColumnName="MadadkarJob" />
+                <ScalarProperty Name="MadadkarPhone" ColumnName="MadadkarPhone" />
+                <ScalarProperty Name="MadadkarMobile" ColumnName="MadadkarMobile" />
+                <ScalarProperty Name="MadadkarMobile2" ColumnName="MadadkarMobile2" />
+                <ScalarProperty Name="MadadkarAccount" ColumnName="MadadkarAccount" />
+                <ScalarProperty Name="MadadkarAddress" ColumnName="MadadkarAddress" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="MadadkarName" ColumnName="MadadkarName" />
+                <ScalarProperty Name="MadadkarEmail" ColumnName="MadadkarEmail" />
+                <ScalarProperty Name="MadadkarImg" ColumnName="MadadkarImg" />
+                <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MadadkarStatus" ColumnName="MadadkarStatus" />
+                <ScalarProperty Name="MadadkarConfirm" ColumnName="MadadkarConfirm" />
+                <ScalarProperty Name="MadadKarLastAction" ColumnName="MadadKarLastAction" />
+                <ScalarProperty Name="PersonnelId" ColumnName="PersonnelId" />
+                <ScalarProperty Name="PersonnelName" ColumnName="PersonnelName" />
+                <ScalarProperty Name="MadadkarPersonnel" ColumnName="MadadkarPersonnel" />
+                <ScalarProperty Name="MadadkarActive" ColumnName="MadadkarActive" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchTitle" ColumnName="BranchTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FG_Hamis">
+            <EntityTypeMapping TypeName="BpmsSharifDataModel.FG_Hamis">
+              <MappingFragment StoreEntitySet="FG_Hamis">
+                <ScalarProperty Name="Hamistartdate" ColumnName="Hamistartdate" />
+                <ScalarProperty Name="HamiPassword" ColumnName="HamiPassword" />
+                <ScalarProperty Name="HamiKey" ColumnName="HamiKey" />
+                <ScalarProperty Name="HamiMadadkar" ColumnName="HamiMadadkar" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="SaveDate" ColumnName="SaveDate" />
+                <ScalarProperty Name="PersonnelId" ColumnName="PersonnelId" />
+                <ScalarProperty Name="HamiAllPhones" ColumnName="HamiAllPhones" />
+                <ScalarProperty Name="HamiComment" ColumnName="HamiComment" />
+                <ScalarProperty Name="HamiPass" ColumnName="HamiPass" />
+                <ScalarProperty Name="HamiUID" ColumnName="HamiUID" />
+                <ScalarProperty Name="HamiJobStatus" ColumnName="HamiJobStatus" />
+                <ScalarProperty Name="HamiPrice" ColumnName="HamiPrice" />
+                <ScalarProperty Name="HamiLastAction" ColumnName="HamiLastAction" />
+                <ScalarProperty Name="HamiAddress" ColumnName="HamiAddress" />
+                <ScalarProperty Name="HamiEmail" ColumnName="HamiEmail" />
+                <ScalarProperty Name="HamiJobId" ColumnName="HamiJobId" />
+                <ScalarProperty Name="HamiBirthdate" ColumnName="HamiBirthdate" />
+                <ScalarProperty Name="HamiPhone2" ColumnName="HamiPhone2" />
+                <ScalarProperty Name="HamiPhone1" ColumnName="HamiPhone1" />
+                <ScalarProperty Name="HamiMobile2" ColumnName="HamiMobile2" />
+                <ScalarProperty Name="HamiMobile1" ColumnName="HamiMobile1" />
+                <ScalarProperty Name="HamiLName" ColumnName="HamiLName" />
+                <ScalarProperty Name="HamiFName" ColumnName="HamiFName" />
+                <ScalarProperty Name="HamiCode" ColumnName="HamiCode" />
+                <ScalarProperty Name="HamiConfirm" ColumnName="HamiConfirm" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="HamiId" ColumnName="HamiId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

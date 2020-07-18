@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BpmsSharifModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="Deteled" Type="bit" />
+          <Property Name="WebLogId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRules">
+          <Key>
+            <PropertyRef Name="UserRuleId" />
+          </Key>
+          <Property Name="UserRuleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ObjectRuleId" Type="int" />
+          <Property Name="CanUse" Type="bit" />
+          <Property Name="ProgramId" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserPass" Type="binary" MaxLength="16" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="UserModel" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="UserActive" Type="bit" Nullable="false" />
+          <Property Name="UserNote" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserConfirm" Type="bit" />
+          <Property Name="UserImg" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecurityCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="UpdatePass" Type="datetime" />
+          <Property Name="LoginCount" Type="int" />
+          <Property Name="LoginDate" Type="datetime" />
+          <Property Name="LoginAddress" Type="nvarchar" MaxLength="15" />
+          <Property Name="LoginStatus" Type="int" />
+          <Property Name="LoginMax" Type="int" />
+          <Property Name="UserOnline" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="UserConfirmMobile" Type="bit" />
+          <Property Name="UserConfirmEmail" Type="bit" />
+          <Property Name="UserZone" Type="int" />
+          <Property Name="UserDateType" Type="int" />
+          <Property Name="UserCountry" Type="nvarchar" MaxLength="2" />
+          <Property Name="UserCurrency" Type="nvarchar" MaxLength="3" />
+          <Property Name="UserMobileCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="UserLanguage" Type="nvarchar" MaxLength="10" />
+          <Property Name="ProgramDefault" Type="int" />
+          <Property Name="UserProgram" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharif.dbo.UserAccessInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserAccessInfo">
+          <Key>
+            <PropertyRef Name="UserAccessId" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ObjectId" />
+          </Key>
+          <Property Name="UserAccessId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ProgramId" Type="int" />
+          <Property Name="ObjectId" Type="int" Nullable="false" />
+          <Property Name="CanView" Type="bit" />
+          <Property Name="CanInsert" Type="bit" />
+          <Property Name="CanEdit" Type="bit" />
+          <Property Name="CanDelete" Type="bit" />
+          <Property Name="CanPrint" Type="bit" />
+          <Property Name="ObjectTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharif.dbo.UserGroupsInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserGroupsInfo">
+          <Key>
+            <PropertyRef Name="UserGroupId" />
+          </Key>
+          <Property Name="UserGroupId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="20" />
+          <Property Name="GroupTitle" Type="nvarchar" MaxLength="51" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharif.dbo.UserLogsInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserLogsInfo">
+          <Key>
+            <PropertyRef Name="UserLogId" />
+          </Key>
+          <Property Name="UserLogId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ProgramId" Type="int" />
+          <Property Name="ObjectId" Type="int" />
+          <Property Name="TableId" Type="int" />
+          <Property Name="TableField" Type="int" />
+          <Property Name="LogTypeId" Type="int" />
+          <Property Name="LogNote" Type="nvarchar" MaxLength="50" />
+          <Property Name="LogDate" Type="smalldatetime" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+          <Property Name="WebLogId" Type="int" />
+          <Property Name="LogTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TableTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharif.dbo.UserMenusInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserMenusInfo">
+          <Key>
+            <PropertyRef Name="UserMenuId" />
+          </Key>
+          <Property Name="UserMenuId" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="MenuType" Type="smallint" />
+          <Property Name="MenuCaption" Type="nvarchar" MaxLength="35" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ObjectId" Type="int" />
+          <Property Name="MenuOrder" Type="int" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="MenuValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuDesc" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BpmsSharif.dbo.UsersInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserActive" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserPass" Type="binary" MaxLength="16" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="UserModel" Type="int" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" />
+          <Property Name="UserActive" Type="bit" Nullable="false" />
+          <Property Name="UserNote" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserConfirm" Type="bit" />
+          <Property Name="UserImg" Type="nvarchar" MaxLength="150" />
+          <Property Name="UserMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecurityCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="UpdatePass" Type="datetime" />
+          <Property Name="LoginCount" Type="int" />
+          <Property Name="LoginDate" Type="datetime" />
+          <Property Name="LoginAddress" Type="nvarchar" MaxLength="15" />
+          <Property Name="LoginStatus" Type="int" />
+          <Property Name="LoginMax" Type="int" />
+          <Property Name="UserOnline" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="UserConfirmMobile" Type="bit" />
+          <Property Name="UserConfirmEmail" Type="bit" />
+          <Property Name="UserZone" Type="int" />
+          <Property Name="UserDateType" Type="int" />
+          <Property Name="UserCountry" Type="nvarchar" MaxLength="2" />
+          <Property Name="UserCurrency" Type="nvarchar" MaxLength="3" />
+          <Property Name="UserMobileCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="UserLanguage" Type="nvarchar" MaxLength="10" />
+          <Property Name="ProgramDefault" Type="int" />
+          <Property Name="UserProgram" Type="int" />
+          <Property Name="ParentName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityContainer Name="BpmsSharifModelStoreContainer">
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRules" EntityType="Self.UserRules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccessInfo" EntityType="Self.UserAccessInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserAccessInfo].[UserAccessId] AS [UserAccessId], 
+    [UserAccessInfo].[UserId] AS [UserId], 
+    [UserAccessInfo].[ProgramId] AS [ProgramId], 
+    [UserAccessInfo].[ObjectId] AS [ObjectId], 
+    [UserAccessInfo].[CanView] AS [CanView], 
+    [UserAccessInfo].[CanInsert] AS [CanInsert], 
+    [UserAccessInfo].[CanEdit] AS [CanEdit], 
+    [UserAccessInfo].[CanDelete] AS [CanDelete], 
+    [UserAccessInfo].[CanPrint] AS [CanPrint], 
+    [UserAccessInfo].[ObjectTitle] AS [ObjectTitle], 
+    [UserAccessInfo].[ObjectName] AS [ObjectName], 
+    [UserAccessInfo].[Deleted] AS [Deleted]
+    FROM [dbo].[UserAccessInfo] AS [UserAccessInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserGroupsInfo" EntityType="Self.UserGroupsInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserGroupsInfo].[UserGroupId] AS [UserGroupId], 
+    [UserGroupsInfo].[UserId] AS [UserId], 
+    [UserGroupsInfo].[GroupId] AS [GroupId], 
+    [UserGroupsInfo].[Deleted] AS [Deleted], 
+    [UserGroupsInfo].[FirstName] AS [FirstName], 
+    [UserGroupsInfo].[LastName] AS [LastName], 
+    [UserGroupsInfo].[GroupName] AS [GroupName], 
+    [UserGroupsInfo].[GroupTitle] AS [GroupTitle]
+    FROM [dbo].[UserGroupsInfo] AS [UserGroupsInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserLogsInfo" EntityType="Self.UserLogsInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserLogsInfo].[UserLogId] AS [UserLogId], 
+    [UserLogsInfo].[UserId] AS [UserId], 
+    [UserLogsInfo].[ProgramId] AS [ProgramId], 
+    [UserLogsInfo].[ObjectId] AS [ObjectId], 
+    [UserLogsInfo].[TableId] AS [TableId], 
+    [UserLogsInfo].[TableField] AS [TableField], 
+    [UserLogsInfo].[LogTypeId] AS [LogTypeId], 
+    [UserLogsInfo].[LogNote] AS [LogNote], 
+    [UserLogsInfo].[LogDate] AS [LogDate], 
+    [UserLogsInfo].[Deleted] AS [Deleted], 
+    [UserLogsInfo].[FirstName] AS [FirstName], 
+    [UserLogsInfo].[LastName] AS [LastName], 
+    [UserLogsInfo].[UserName] AS [UserName], 
+    [UserLogsInfo].[WebLogId] AS [WebLogId], 
+    [UserLogsInfo].[LogTypeName] AS [LogTypeName], 
+    [UserLogsInfo].[TableName] AS [TableName], 
+    [UserLogsInfo].[TableTitle] AS [TableTitle]
+    FROM [dbo].[UserLogsInfo] AS [UserLogsInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserMenusInfo" EntityType="Self.UserMenusInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserMenusInfo].[UserMenuId] AS [UserMenuId], 
+    [UserMenusInfo].[ParentId] AS [ParentId], 
+    [UserMenusInfo].[MenuType] AS [MenuType], 
+    [UserMenusInfo].[MenuCaption] AS [MenuCaption], 
+    [UserMenusInfo].[UserId] AS [UserId], 
+    [UserMenusInfo].[ObjectId] AS [ObjectId], 
+    [UserMenusInfo].[MenuOrder] AS [MenuOrder], 
+    [UserMenusInfo].[ObjectName] AS [ObjectName], 
+    [UserMenusInfo].[Deleted] AS [Deleted], 
+    [UserMenusInfo].[MenuValue] AS [MenuValue], 
+    [UserMenusInfo].[MenuImage] AS [MenuImage], 
+    [UserMenusInfo].[MenuDesc] AS [MenuDesc]
+    FROM [dbo].[UserMenusInfo] AS [UserMenusInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UsersInfo" EntityType="Self.UsersInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersInfo].[UserId] AS [UserId], 
+    [UsersInfo].[UserName] AS [UserName], 
+    [UsersInfo].[UserPass] AS [UserPass], 
+    [UsersInfo].[ParentId] AS [ParentId], 
+    [UsersInfo].[UserModel] AS [UserModel], 
+    [UsersInfo].[FirstName] AS [FirstName], 
+    [UsersInfo].[LastName] AS [LastName], 
+    [UsersInfo].[UserActive] AS [UserActive], 
+    [UsersInfo].[UserNote] AS [UserNote], 
+    [UsersInfo].[UserEmail] AS [UserEmail], 
+    [UsersInfo].[UserConfirm] AS [UserConfirm], 
+    [UsersInfo].[UserImg] AS [UserImg], 
+    [UsersInfo].[UserMobile] AS [UserMobile], 
+    [UsersInfo].[SecurityCode] AS [SecurityCode], 
+    [UsersInfo].[UpdatePass] AS [UpdatePass], 
+    [UsersInfo].[LoginCount] AS [LoginCount], 
+    [UsersInfo].[LoginDate] AS [LoginDate], 
+    [UsersInfo].[LoginAddress] AS [LoginAddress], 
+    [UsersInfo].[LoginStatus] AS [LoginStatus], 
+    [UsersInfo].[LoginMax] AS [LoginMax], 
+    [UsersInfo].[UserOnline] AS [UserOnline], 
+    [UsersInfo].[Deleted] AS [Deleted], 
+    [UsersInfo].[UserConfirmMobile] AS [UserConfirmMobile], 
+    [UsersInfo].[UserConfirmEmail] AS [UserConfirmEmail], 
+    [UsersInfo].[UserZone] AS [UserZone], 
+    [UsersInfo].[UserDateType] AS [UserDateType], 
+    [UsersInfo].[UserCountry] AS [UserCountry], 
+    [UsersInfo].[UserCurrency] AS [UserCurrency], 
+    [UsersInfo].[UserMobileCode] AS [UserMobileCode], 
+    [UsersInfo].[UserLanguage] AS [UserLanguage], 
+    [UsersInfo].[ProgramDefault] AS [ProgramDefault], 
+    [UsersInfo].[UserProgram] AS [UserProgram], 
+    [UsersInfo].[ParentName] AS [ParentName]
+    FROM [dbo].[UsersInfo] AS [UsersInfo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BpmsSharifModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="Deteled" Type="Boolean" />
+          <Property Name="WebLogId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserRules">
+          <Key>
+            <PropertyRef Name="UserRuleId" />
+          </Key>
+          <Property Name="UserRuleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ObjectRuleId" Type="Int32" />
+          <Property Name="CanUse" Type="Boolean" />
+          <Property Name="ProgramId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserPass" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="UserModel" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UserActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserNote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserConfirm" Type="Boolean" />
+          <Property Name="UserImg" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatePass" Type="DateTime" Precision="3" />
+          <Property Name="LoginCount" Type="Int32" />
+          <Property Name="LoginDate" Type="DateTime" Precision="3" />
+          <Property Name="LoginAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LoginStatus" Type="Int32" />
+          <Property Name="LoginMax" Type="Int32" />
+          <Property Name="UserOnline" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="UserConfirmMobile" Type="Boolean" />
+          <Property Name="UserConfirmEmail" Type="Boolean" />
+          <Property Name="UserZone" Type="Int32" />
+          <Property Name="UserDateType" Type="Int32" />
+          <Property Name="UserCountry" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="UserCurrency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobileCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramDefault" Type="Int32" />
+          <Property Name="UserProgram" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserAccessInfo">
+          <Key>
+            <PropertyRef Name="UserAccessId" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ObjectId" />
+          </Key>
+          <Property Name="UserAccessId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ProgramId" Type="Int32" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="CanView" Type="Boolean" />
+          <Property Name="CanInsert" Type="Boolean" />
+          <Property Name="CanEdit" Type="Boolean" />
+          <Property Name="CanDelete" Type="Boolean" />
+          <Property Name="CanPrint" Type="Boolean" />
+          <Property Name="ObjectTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ObjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserGroupsInfo">
+          <Key>
+            <PropertyRef Name="UserGroupId" />
+          </Key>
+          <Property Name="UserGroupId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GroupTitle" Type="String" MaxLength="51" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserLogsInfo">
+          <Key>
+            <PropertyRef Name="UserLogId" />
+          </Key>
+          <Property Name="UserLogId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ProgramId" Type="Int32" />
+          <Property Name="ObjectId" Type="Int32" />
+          <Property Name="TableId" Type="Int32" />
+          <Property Name="TableField" Type="Int32" />
+          <Property Name="LogTypeId" Type="Int32" />
+          <Property Name="LogNote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LogDate" Type="DateTime" Precision="0" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WebLogId" Type="Int32" />
+          <Property Name="LogTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TableTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserMenusInfo">
+          <Key>
+            <PropertyRef Name="UserMenuId" />
+          </Key>
+          <Property Name="UserMenuId" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="MenuType" Type="Int16" />
+          <Property Name="MenuCaption" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ObjectId" Type="Int32" />
+          <Property Name="MenuOrder" Type="Int32" />
+          <Property Name="ObjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="MenuValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuDesc" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UsersInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserActive" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserPass" Type="Binary" MaxLength="16" FixedLength="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="UserModel" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UserActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserNote" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserConfirm" Type="Boolean" />
+          <Property Name="UserImg" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatePass" Type="DateTime" Precision="3" />
+          <Property Name="LoginCount" Type="Int32" />
+          <Property Name="LoginDate" Type="DateTime" Precision="3" />
+          <Property Name="LoginAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="LoginStatus" Type="Int32" />
+          <Property Name="LoginMax" Type="Int32" />
+          <Property Name="UserOnline" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="UserConfirmMobile" Type="Boolean" />
+          <Property Name="UserConfirmEmail" Type="Boolean" />
+          <Property Name="UserZone" Type="Int32" />
+          <Property Name="UserDateType" Type="Int32" />
+          <Property Name="UserCountry" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="UserCurrency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="UserMobileCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserLanguage" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramDefault" Type="Int32" />
+          <Property Name="UserProgram" Type="Int32" />
+          <Property Name="ParentName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SharifEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+          <EntitySet Name="UserRules" EntityType="Self.UserRules" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UserAccessInfo" EntityType="Self.UserAccessInfo" />
+          <EntitySet Name="UserGroupsInfo" EntityType="Self.UserGroupsInfo" />
+          <EntitySet Name="UserLogsInfo" EntityType="Self.UserLogsInfo" />
+          <EntitySet Name="UserMenusInfo" EntityType="Self.UserMenusInfo" />
+          <EntitySet Name="UsersInfo" EntityType="Self.UsersInfo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BpmsSharifModelStoreContainer" CdmEntityContainer="SharifEntities">
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="BpmsSharifModel.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Deteled" ColumnName="Deteled" />
+                <ScalarProperty Name="WebLogId" ColumnName="WebLogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRules">
+            <EntityTypeMapping TypeName="BpmsSharifModel.UserRules">
+              <MappingFragment StoreEntitySet="UserRules">
+                <ScalarProperty Name="UserRuleId" ColumnName="UserRuleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ObjectRuleId" ColumnName="ObjectRuleId" />
+                <ScalarProperty Name="CanUse" ColumnName="CanUse" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BpmsSharifModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="UserModel" ColumnName="UserModel" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserActive" ColumnName="UserActive" />
+                <ScalarProperty Name="UserNote" ColumnName="UserNote" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserConfirm" ColumnName="UserConfirm" />
+                <ScalarProperty Name="UserImg" ColumnName="UserImg" />
+                <ScalarProperty Name="UserMobile" ColumnName="UserMobile" />
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+                <ScalarProperty Name="UpdatePass" ColumnName="UpdatePass" />
+                <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+                <ScalarProperty Name="LoginAddress" ColumnName="LoginAddress" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="LoginMax" ColumnName="LoginMax" />
+                <ScalarProperty Name="UserOnline" ColumnName="UserOnline" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="UserConfirmMobile" ColumnName="UserConfirmMobile" />
+                <ScalarProperty Name="UserConfirmEmail" ColumnName="UserConfirmEmail" />
+                <ScalarProperty Name="UserZone" ColumnName="UserZone" />
+                <ScalarProperty Name="UserDateType" ColumnName="UserDateType" />
+                <ScalarProperty Name="UserCountry" ColumnName="UserCountry" />
+                <ScalarProperty Name="UserCurrency" ColumnName="UserCurrency" />
+                <ScalarProperty Name="UserMobileCode" ColumnName="UserMobileCode" />
+                <ScalarProperty Name="UserLanguage" ColumnName="UserLanguage" />
+                <ScalarProperty Name="ProgramDefault" ColumnName="ProgramDefault" />
+                <ScalarProperty Name="UserProgram" ColumnName="UserProgram" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccessInfo">
+            <EntityTypeMapping TypeName="BpmsSharifModel.UserAccessInfo">
+              <MappingFragment StoreEntitySet="UserAccessInfo">
+                <ScalarProperty Name="UserAccessId" ColumnName="UserAccessId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="CanInsert" ColumnName="CanInsert" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+                <ScalarProperty Name="ObjectTitle" ColumnName="ObjectTitle" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroupsInfo">
+            <EntityTypeMapping TypeName="BpmsSharifModel.UserGroupsInfo">
+              <MappingFragment StoreEntitySet="UserGroupsInfo">
+                <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupTitle" ColumnName="GroupTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogsInfo">
+            <EntityTypeMapping TypeName="BpmsSharifModel.UserLogsInfo">
+              <MappingFragment StoreEntitySet="UserLogsInfo">
+                <ScalarProperty Name="UserLogId" ColumnName="UserLogId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="TableId" ColumnName="TableId" />
+                <ScalarProperty Name="TableField" ColumnName="TableField" />
+                <ScalarProperty Name="LogTypeId" ColumnName="LogTypeId" />
+                <ScalarProperty Name="LogNote" ColumnName="LogNote" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="WebLogId" ColumnName="WebLogId" />
+                <ScalarProperty Name="LogTypeName" ColumnName="LogTypeName" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="TableTitle" ColumnName="TableTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMenusInfo">
+            <EntityTypeMapping TypeName="BpmsSharifModel.UserMenusInfo">
+              <MappingFragment StoreEntitySet="UserMenusInfo">
+                <ScalarProperty Name="UserMenuId" ColumnName="UserMenuId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+                <ScalarProperty Name="MenuCaption" ColumnName="MenuCaption" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="MenuOrder" ColumnName="MenuOrder" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="MenuValue" ColumnName="MenuValue" />
+                <ScalarProperty Name="MenuImage" ColumnName="MenuImage" />
+                <ScalarProperty Name="MenuDesc" ColumnName="MenuDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersInfo">
+            <EntityTypeMapping TypeName="BpmsSharifModel.UsersInfo">
+              <MappingFragment StoreEntitySet="UsersInfo">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="UserModel" ColumnName="UserModel" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserActive" ColumnName="UserActive" />
+                <ScalarProperty Name="UserNote" ColumnName="UserNote" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserConfirm" ColumnName="UserConfirm" />
+                <ScalarProperty Name="UserImg" ColumnName="UserImg" />
+                <ScalarProperty Name="UserMobile" ColumnName="UserMobile" />
+                <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+                <ScalarProperty Name="UpdatePass" ColumnName="UpdatePass" />
+                <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+                <ScalarProperty Name="LoginAddress" ColumnName="LoginAddress" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="LoginMax" ColumnName="LoginMax" />
+                <ScalarProperty Name="UserOnline" ColumnName="UserOnline" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="UserConfirmMobile" ColumnName="UserConfirmMobile" />
+                <ScalarProperty Name="UserConfirmEmail" ColumnName="UserConfirmEmail" />
+                <ScalarProperty Name="UserZone" ColumnName="UserZone" />
+                <ScalarProperty Name="UserDateType" ColumnName="UserDateType" />
+                <ScalarProperty Name="UserCountry" ColumnName="UserCountry" />
+                <ScalarProperty Name="UserCurrency" ColumnName="UserCurrency" />
+                <ScalarProperty Name="UserMobileCode" ColumnName="UserMobileCode" />
+                <ScalarProperty Name="UserLanguage" ColumnName="UserLanguage" />
+                <ScalarProperty Name="ProgramDefault" ColumnName="ProgramDefault" />
+                <ScalarProperty Name="UserProgram" ColumnName="UserProgram" />
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
