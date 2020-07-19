@@ -426,6 +426,52 @@ namespace SIPSoftSharif.Controllers
             return Ok();
 
         }
+
+        //رزرو شیفت کاری برا ی مددکار
+        [HttpPost]
+        [Route("api/Job/AddShiftForMadadkar")]
+        public IHttpActionResult AddShiftForMadadkar(int shiftid,int madadkarId)
+        {
+            var result = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
+            if(result !=null)
+            {
+                var presult = result.ShiftPersons.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
+                if (presult == null)
+                {
+                    var madadkar = SharifDataEntity.FG_madadkarsInfo.Where(x => x.MadadkarId == madadkarId).Select(s=>s.MadadkarName ).FirstOrDefault();
+                    string madadkarName = madadkar;
+                    var finalresult = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
+                    finalresult.ShiftPersons.Add(new ShiftPersons() { MadadkarId = madadkarId, MadadkarName = madadkarName });
+                    SipDataEntity.SaveChanges();
+                    return Ok("Shift Added");
+                }
+            }
+            return NotFound();
+        }
+
+        //حذف شیفت کاری برای مددکار
+        [HttpPost]
+        [Route("api/Job/RemoveShiftForMadadkar")]
+        public IHttpActionResult RemoveShiftForMadadkar(int shiftid, int madadkarId)
+        {
+            var result = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
+            if (result != null)
+            {
+                var presult = result.ShiftPersons.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
+                if (presult != null)
+                {
+                    //var madadkar = SharifDataEntity.FG_madadkarsInfo.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
+                    //string madadkarName = madadkar.MadadkarName;
+                    //var finalresult = SipDataEntity.ShiftPersons.Where(x=>x.MadadkarId==madadkarId).FirstOrDefault();
+                    SipDataEntity.ShiftPersons.Remove(presult);
+                    SipDataEntity.SaveChanges();
+                    return Ok("Shift Removed");
+                }
+            }
+            return NotFound();
+
+
+        }
     }
 
     
