@@ -389,6 +389,25 @@ namespace SIPSoftSharif.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("api/Job/GetMadadakrSchedule")]
+        public IHttpActionResult GetMadadkarSchedule(int madadkarId,string now = null)
+        {
+            DateTime nowdate = new DateTime();
+            if (now != null)
+                nowdate = DateTime.ParseExact(now, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            else
+                nowdate = DateTime.Now;
+
+            var result = (from job in SipDataEntity.JobSchedule
+                         from shift in job.JobShift
+                         from persons in shift.ShiftPersons
+                         where persons.MadadkarId == madadkarId && job.JobDate == nowdate
+                         select job).FirstOrDefault();
+
+            return Ok(result);
+        }
+
         //دریافت شیفت کاری امروز
         [HttpGet]
         [Route("api/Job/GetTodyShift")]
@@ -400,9 +419,12 @@ namespace SIPSoftSharif.Controllers
             nowdate = DateTime.ParseExact(my,"yyyy-MM-dd", CultureInfo.InvariantCulture);
 
             var result = SipDataEntity.JobSchedule.Where(x => x.JobDate == nowdate).FirstOrDefault();
+            
 
             return Ok(result);
         }
+
+
 
         //دریافت شیفت های کاری یک بازه
         [HttpGet]
