@@ -376,17 +376,27 @@ namespace SIPSoftSharif.Controllers
         //دریافت شیفت کاری یک روز خاص
         [HttpGet]
         [Route("api/Job/GetTodyJobSchedule")]
-        public IHttpActionResult GetTodayJobSchedule(string now=null)
+        public IHttpActionResult GetTodayJobSchedule(string now=null,int duration=0)
         {
             DateTime nowdate = new DateTime();
             if (now != null)
                 nowdate = DateTime.ParseExact(now, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             else
+            {
                 nowdate = DateTime.Now;
+                string strDate = nowdate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                nowdate = DateTime.ParseExact(strDate, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            }
+            if (duration != 0)
+            {
+                nowdate = nowdate.AddDays(duration);
+            }
 
             var result = SipDataEntity.JobSchedule.Where(x => x.JobDate == nowdate ).FirstOrDefault();
+            if(result!=null)
             
             return Ok(result);
+            return NotFound();
         }
 
         [HttpGet]
@@ -397,7 +407,10 @@ namespace SIPSoftSharif.Controllers
             if (now != null)
                 nowdate = DateTime.ParseExact(now, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             else
+            {
                 nowdate = DateTime.Now;
+                nowdate = DateTime.ParseExact(nowdate.ToShortDateString(), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            }
 
             var result = (from job in SipDataEntity.JobSchedule
                          from shift in job.JobShift
@@ -438,15 +451,39 @@ namespace SIPSoftSharif.Controllers
         }
 
         //ثبت ساعت ورود مددکار
-        [HttpGet]
+        [HttpPost]
         [Route("api/Job/AddEntranceTime")]
-        public IHttpActionResult addEntrance(int madadkarId,int JobShiftId)
+        public IHttpActionResult addEntrance(int ShiftPersonId,int JobShiftId)
         {
-            var Result = SipDataEntity.ShiftPersons.Where(x => x.JobShift.id == JobShiftId && x.MadadkarId == madadkarId).FirstOrDefault();
+            
+            var Result = SipDataEntity.ShiftPersons.Where(x => x.JobShift.id == JobShiftId && x.id == ShiftPersonId).FirstOrDefault();
             Result.EnterTime = DateTime.Now.TimeOfDay;
             SipDataEntity.SaveChanges();
             return Ok();
 
+        }
+        [HttpPost]
+        [Route("api/Job/AddExitTime")]
+        public IHttpActionResult addExit(int ShiftPersonId, int JobShiftId)
+        {
+
+            var Result = SipDataEntity.ShiftPersons.Where(x => x.JobShift.id == JobShiftId && x.id == ShiftPersonId).FirstOrDefault();
+            Result.ExitTime = DateTime.Now.TimeOfDay;
+            SipDataEntity.SaveChanges();
+            return Ok();
+
+        }
+
+        [HttpPost]
+        [Route("api/Job/GetShiftById")]
+        public IHttpActionResult GetShiftById(int ShiftId)
+        {
+            JobShift result = SipDataEntity.JobShift.Where(x => x.id == ShiftId).FirstOrDefault();
+            //var result2 = result.ShiftPersons;
+            var s = result.id;
+            if (result != null)
+                return Ok(result);
+            return NotFound();
         }
 
         //رزرو شیفت کاری برا ی مددکار
@@ -490,7 +527,7 @@ namespace SIPSoftSharif.Controllers
                     return Ok("Shift Removed");
                 }
             }
-            return NotFound();
+            return Ok("Peyda nashod");
 
 
         }
