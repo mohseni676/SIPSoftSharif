@@ -455,20 +455,29 @@ namespace SIPSoftSharif.Controllers
         [Route("api/Job/AddEntranceTime")]
         public IHttpActionResult addEntrance(int ShiftPersonId,int JobShiftId)
         {
-            
+            var shift = SipDataEntity.JobShift.Where(x => x.id == JobShiftId).FirstOrDefault();
             var Result = SipDataEntity.ShiftPersons.Where(x => x.JobShift.id == JobShiftId && x.id == ShiftPersonId).FirstOrDefault();
-            Result.EnterTime = DateTime.Now.TimeOfDay;
+            if (DateTime.Now.TimeOfDay > shift.ShiftStartTime)
+                Result.EnterTime = DateTime.Now.TimeOfDay;
+            else
+                Result.EnterTime = shift.ShiftStartTime;
             SipDataEntity.SaveChanges();
             return Ok();
 
         }
+
+        //ثبت خروج مددکار
         [HttpPost]
         [Route("api/Job/AddExitTime")]
         public IHttpActionResult addExit(int ShiftPersonId, int JobShiftId)
         {
 
+            var shift = SipDataEntity.JobShift.Where(x => x.id == JobShiftId).FirstOrDefault();
             var Result = SipDataEntity.ShiftPersons.Where(x => x.JobShift.id == JobShiftId && x.id == ShiftPersonId).FirstOrDefault();
-            Result.ExitTime = DateTime.Now.TimeOfDay;
+            if (DateTime.Now.TimeOfDay < shift.ShiftEndTime)
+                Result.ExitTime = DateTime.Now.TimeOfDay;
+            else
+                Result.ExitTime = shift.ShiftEndTime;
             SipDataEntity.SaveChanges();
             return Ok();
 
@@ -491,18 +500,22 @@ namespace SIPSoftSharif.Controllers
         [Route("api/Job/AddShiftForMadadkar")]
         public IHttpActionResult AddShiftForMadadkar(int shiftid,int madadkarId)
         {
-            var result = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
-            if(result !=null)
+           if(DateTime.Now.Hour>12 || DateTime.Now.Hour < 21)
             {
-                var presult = result.ShiftPersons.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
-                if (presult == null)
+                var result = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
+                if (result != null)
                 {
-                    var madadkar = SharifDataEntity.FG_madadkarsInfo.Where(x => x.MadadkarId == madadkarId).Select(s=>s.MadadkarName ).FirstOrDefault();
-                    string madadkarName = madadkar;
-                    var finalresult = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
-                    finalresult.ShiftPersons.Add(new ShiftPersons() { MadadkarId = madadkarId, MadadkarName = madadkarName });
-                    SipDataEntity.SaveChanges();
-                    return Ok("Shift Added");
+                    var presult = result.ShiftPersons.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
+                    var cnt = result.ShiftPersons.Count();
+                    if (presult == null && cnt < result.ShiftQuantity)
+                    {
+                        var madadkar = SharifDataEntity.FG_madadkarsInfo.Where(x => x.MadadkarId == madadkarId).Select(s => s.MadadkarName).FirstOrDefault();
+                        string madadkarName = madadkar;
+                        var finalresult = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
+                        finalresult.ShiftPersons.Add(new ShiftPersons() { MadadkarId = madadkarId, MadadkarName = madadkarName });
+                        SipDataEntity.SaveChanges();
+                        return Ok("Shift Added");
+                    }
                 }
             }
             return NotFound();
@@ -513,18 +526,21 @@ namespace SIPSoftSharif.Controllers
         [Route("api/Job/RemoveShiftForMadadkar")]
         public IHttpActionResult RemoveShiftForMadadkar(int shiftid, int madadkarId)
         {
-            var result = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
-            if (result != null)
+            if (DateTime.Now.Hour > 12 || DateTime.Now.Hour < 21)
             {
-                var presult = result.ShiftPersons.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
-                if (presult != null)
+                var result = SipDataEntity.JobShift.Where(x => x.id == shiftid).FirstOrDefault();
+                if (result != null)
                 {
-                    //var madadkar = SharifDataEntity.FG_madadkarsInfo.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
-                    //string madadkarName = madadkar.MadadkarName;
-                    //var finalresult = SipDataEntity.ShiftPersons.Where(x=>x.MadadkarId==madadkarId).FirstOrDefault();
-                    SipDataEntity.ShiftPersons.Remove(presult);
-                    SipDataEntity.SaveChanges();
-                    return Ok("Shift Removed");
+                    var presult = result.ShiftPersons.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
+                    if (presult != null)
+                    {
+                        //var madadkar = SharifDataEntity.FG_madadkarsInfo.Where(x => x.MadadkarId == madadkarId).FirstOrDefault();
+                        //string madadkarName = madadkar.MadadkarName;
+                        //var finalresult = SipDataEntity.ShiftPersons.Where(x=>x.MadadkarId==madadkarId).FirstOrDefault();
+                        SipDataEntity.ShiftPersons.Remove(presult);
+                        SipDataEntity.SaveChanges();
+                        return Ok("Shift Removed");
+                    }
                 }
             }
             return Ok("Peyda nashod");

@@ -237,17 +237,8 @@ warning 6002: The table/view 'madadkar_online.dbo.vw_Payments' does not have a p
     [PaymentDetails].[OptionalDescription] AS [OptionalDescription]
     FROM [dbo].[PaymentDetails] AS [PaymentDetails]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="SIPExtensions" EntityType="Self.SIPExtensions" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SIPExtensions].[Id] AS [Id], 
-    [SIPExtensions].[Extention] AS [Extention], 
-    [SIPExtensions].[DisplayName] AS [DisplayName], 
-    [SIPExtensions].[Password] AS [Password], 
-    [SIPExtensions].[MadadkarId] AS [MadadkarId], 
-    [SIPExtensions].[MadadkarName] AS [MadadkarName], 
-    [SIPExtensions].[RegDate] AS [RegDate], 
-    [SIPExtensions].[Enabled] AS [Enabled]
-    FROM [dbo].[SIPExtensions] AS [SIPExtensions]</DefiningQuery>
+          <EntitySet Name="SIPExtensions" EntityType="Self.SIPExtensions" store:Type="Tables" Schema="dbo">
+         
           </EntitySet>
           <EntitySet Name="vw_Payments" EntityType="Self.vw_Payments" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
